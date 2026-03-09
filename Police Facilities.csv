@@ -1,0 +1,19 @@
+﻿OBJECTID,Facility_Name,Facility_Address,created_user,created_date,last_edited_user,last_edited_date,GlobalID,x,y
+1,Public Affairs Building-Police Headquarters,320 North Ripley St,,,,,{B187E8B4-9BCD-48D7-A334-E6F26E74E222},-86.298,32.382
+2,Montgomery Police Academy (Alabama Advanced Criminal Justice Academy),740 Mildred St,,,,,{FD16E4C8-CE4E-4116-99DE-84E00650BB59},-86.32,32.373
+3,Outdoor Range & Training Facility,5880 Old Hayneville Rd,,,,,{A834B303-2A98-4FBE-AB5D-8FE66D8025A4},-86.419,32.313
+4,River District Office Substation,495 Molton St,,,,,{5630BBC7-E8D9-4AE2-89C4-E0BBC52E618D},-86.315,32.379
+5,River District Precinct Substation,116 Montgomery St,,,,,{5C3DF105-68D5-46E7-8B84-633958BBEE6C},-86.31,32.377
+6,River District Alley Substation,130 Commerce St,,,,,{238DFEC6-089F-4E9D-882A-8A229AFCF7EC},-86.311,32.38
+7,K-9 Kennel & Training Facility,1428 Communications Pkwy,,,,,{B5CC250B-2D66-477F-A46E-17DF9091C2D3},-86.296,32.391
+8,Property Evidence Supply Storage Facility,1514 Highland Av,,,,,{F20511BE-6580-468B-B31F-688D94D6124E},-86.289,32.372
+9,DPS SouthCentral,3003 E South Blvd,,,abowen,"8/17/18, 11:25 PM",{A240054D-6273-4E09-9904-E20B488F18D6},-86.245,32.328
+10,Indoor Range & Training Facility,1022 Madison Av,,,,,{68413AF3-771F-4070-959B-B6BD6A696C38},-86.294,32.379
+11,Criminal Investigation Division & SOD Office,1751 Cong W L Dickinson Dr,,,,,{D29435F8-524F-489F-B32D-1B6032D23D32},-86.264,32.408
+13,Director of Public Safety Office,1 Dexter Plaza,,,,,{0C82FD0A-BB6A-4EE5-B39F-DA2943AE1EC8},-86.308,32.379
+14,Crime Scene Bureau,954 North Ripley,,,,,{0D8D7BCC-58A0-4A5B-9723-5ED362C52594},-86.297,32.388
+15,Special Response Bureau - School Resource Officer,60 W Fairview Ave,,,abowen,"8/17/18, 11:06 PM",{830A3F02-D2C2-47B2-A970-CC5ED293C8B8},-86.31,32.352
+16,River District Office,138 Lee St,abowen,"8/17/18, 4:55 PM",abowen,"8/17/18, 4:56 PM",{2B77A5CE-2358-4CCA-A99B-04994502ED1B},-86.31,32.376
+17,Specialized Property - Evidence and Supply Facility,25 E Railroad St,abowen,"8/17/18, 5:09 PM",abowen,"8/17/18, 5:10 PM",{60A89175-0569-4605-B05D-3A44B2FE1B87},-86.308,32.386
+18,Peer Suport Office,2190 E South Blvd,abowen,"8/17/18, 5:38 PM",abowen,"8/17/18, 5:39 PM",{89C48387-8FA3-4979-8FE9-7B381324D4B2},-86.273,32.327
+19,ALEA Emergency Vehicle Operation Center,5896 Old Hayneville Rd,abowen,"8/17/18, 10:56 PM",abowen,"8/17/18, 11:00 PM",{F24DDAD1-0E3C-48E5-8E51-25E53E60FC8F},-86.423,32.308

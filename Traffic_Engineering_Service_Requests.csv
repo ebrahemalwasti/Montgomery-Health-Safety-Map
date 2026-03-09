@@ -1,0 +1,361 @@
+﻿Service_Request_Type,Month,Count_,Request_Category,ObjectId
+Basketball Goal on City ROW,01 - OCT,2,Other,1
+Install a New Street Light,06 - MAR,4,Street Lights,2
+Install New Sign,04 - JAN,3,Street Signs,3
+Bush or Objects Blocking Sight View,01 - OCT,1,Other,4
+Neighborhood Watch Sign,04 - JAN,0,Street Signs,5
+Street Light Out,06 - MAR,23,Street Lights,6
+Dumpster Permit,01 - OCT,0,Other,7
+Repair Existing Sign,04 - JAN,8,Street Signs,8
+Leaning Light Pole,06 - MAR,3,Street Lights,9
+Handicap Parking,01 - OCT,0,Other,10
+Replace Missing Sign,04 - JAN,2,Street Signs,11
+Refresh an Existing Marking,06 - MAR,3,Roadway Marking,12
+Change Speed Limit,01 - OCT,0,Traffic Calming,13
+School Zone Sign,04 - JAN,0,Street Signs,14
+Add a New Marking,06 - MAR,1,Roadway Marking,15
+Dark Area Near Existing Street Light,01 - OCT,0,Street Lights,16
+Traffic Calming Request,02 - NOV,5,Traffic Calming,17
+Sign Relocation,04 - JAN,0,Street Signs,18
+Remove a Marking,06 - MAR,0,Roadway Marking,19
+Install a New Street Light,01 - OCT,7,Street Lights,20
+Add a Left Turn Indication at a Signal,02 - NOV,0,Traffic Signals,21
+Stop Sign Missing/Damaged,04 - JAN,4,Street Signs,22
+Change Sign Type,06 - MAR,0,Street Signs,23
+Street Light Out,01 - OCT,30,Street Lights,24
+Check a Dark Signalized Intersection,02 - NOV,3,Traffic Signals,25
+Yield Sign Missing/Damaged,04 - JAN,0,Street Signs,26
+Install Multi-way Stop,06 - MAR,0,Street Signs,27
+Leaning Light Pole,01 - OCT,0,Street Lights,28
+Check the Timing of an Approach,02 - NOV,5,Traffic Signals,29
+Traffic Calming Request,04 - JAN,5,Traffic Calming,30
+Install New Sign,06 - MAR,9,Street Signs,31
+Refresh an Existing Marking,01 - OCT,4,Roadway Marking,32
+Install a New Signalized Intersection,02 - NOV,0,Traffic Signals,33
+Add a Left Turn Indication at a Signal,04 - JAN,1,Traffic Signals,34
+Neighborhood Watch Sign,06 - MAR,0,Street Signs,35
+Add a New Marking,01 - OCT,2,Roadway Marking,36
+Investigate a Signalized Intersection in Flash,02 - NOV,5,Traffic Signals,37
+Check a Dark Signalized Intersection,04 - JAN,3,Traffic Signals,38
+Repair Existing Sign,06 - MAR,24,Street Signs,39
+Remove a Marking,01 - OCT,1,Roadway Marking,40
+Replace a Signal Indication that is Not Working,02 - NOV,3,Traffic Signals,41
+Check the Timing of an Approach,04 - JAN,11,Traffic Signals,42
+Change Sign Type,01 - OCT,1,Street Signs,43
+Traffic Signal Needing Physical Repair,02 - NOV,1,Traffic Signals,44
+Replace Missing Sign,06 - MAR,8,Street Signs,45
+Install a New Signalized Intersection,04 - JAN,0,Traffic Signals,46
+Install Multi-way Stop,01 - OCT,0,Street Signs,47
+Basketball Goal on City ROW,03 - DEC,0,Other,48
+School Zone Sign,06 - MAR,0,Street Signs,49
+Investigate a Signalized Intersection in Flash,04 - JAN,6,Traffic Signals,50
+Install New Sign,01 - OCT,6,Street Signs,51
+Bush or Objects Blocking Sight View,03 - DEC,1,Other,52
+Sign Relocation,06 - MAR,1,Street Signs,53
+Replace a Signal Indication that is Not Working,04 - JAN,2,Traffic Signals,54
+Neighborhood Watch Sign,01 - OCT,0,Street Signs,55
+Dumpster Permit,03 - DEC,0,Other,56
+Stop Sign Missing/Damaged,06 - MAR,7,Street Signs,57
+Traffic Signal Needing Physical Repair,04 - JAN,2,Traffic Signals,58
+Handicap Parking,03 - DEC,0,Other,59
+Repair Existing Sign,01 - OCT,11,Street Signs,60
+Yield Sign Missing/Damaged,06 - MAR,0,Street Signs,61
+Basketball Goal on City ROW,05 - FEB,1,Other,62
+Change Speed Limit,03 - DEC,0,Traffic Calming,63
+Traffic Calming Request,06 - MAR,15,Traffic Calming,64
+Replace Missing Sign,01 - OCT,3,Street Signs,65
+Bush or Objects Blocking Sight View,05 - FEB,1,Other,66
+Dark Area Near Existing Street Light,03 - DEC,0,Street Lights,67
+Install a New Street Light,03 - DEC,0,Street Lights,68
+Street Light Out,03 - DEC,16,Street Lights,69
+Leaning Light Pole,03 - DEC,2,Street Lights,70
+Refresh an Existing Marking,03 - DEC,2,Roadway Marking,71
+Add a New Marking,03 - DEC,0,Roadway Marking,72
+Remove a Marking,03 - DEC,0,Roadway Marking,73
+Change Sign Type,03 - DEC,0,Street Signs,74
+Install Multi-way Stop,03 - DEC,0,Street Signs,75
+Install New Sign,03 - DEC,6,Street Signs,76
+Neighborhood Watch Sign,03 - DEC,0,Street Signs,77
+Repair Existing Sign,03 - DEC,2,Street Signs,78
+Replace Missing Sign,03 - DEC,1,Street Signs,79
+School Zone Sign,03 - DEC,0,Street Signs,80
+Sign Relocation,03 - DEC,0,Street Signs,81
+Stop Sign Missing/Damaged,03 - DEC,6,Street Signs,82
+Yield Sign Missing/Damaged,03 - DEC,0,Street Signs,83
+Traffic Calming Request,03 - DEC,0,Traffic Calming,84
+Add a Left Turn Indication at a Signal,03 - DEC,0,Traffic Signals,85
+Check a Dark Signalized Intersection,03 - DEC,5,Traffic Signals,86
+Check the Timing of an Approach,03 - DEC,13,Traffic Signals,87
+Install a New Signalized Intersection,03 - DEC,0,Traffic Signals,88
+Investigate a Signalized Intersection in Flash,03 - DEC,13,Traffic Signals,89
+Replace a Signal Indication that is Not Working,03 - DEC,3,Traffic Signals,90
+Traffic Signal Needing Physical Repair,03 - DEC,1,Traffic Signals,91
+Basketball Goal on City ROW,04 - JAN,1,Other,92
+Bush or Objects Blocking Sight View,04 - JAN,2,Other,93
+Dumpster Permit,04 - JAN,0,Other,94
+Handicap Parking,04 - JAN,0,Other,95
+Change Speed Limit,04 - JAN,0,Traffic Calming,96
+Dark Area Near Existing Street Light,04 - JAN,0,Street Lights,97
+Install a New Street Light,04 - JAN,1,Street Lights,98
+Street Light Out,04 - JAN,14,Street Lights,99
+Leaning Light Pole,04 - JAN,0,Street Lights,100
+Refresh an Existing Marking,04 - JAN,6,Roadway Marking,101
+Add a New Marking,04 - JAN,0,Roadway Marking,102
+Remove a Marking,04 - JAN,0,Roadway Marking,103
+Change Sign Type,04 - JAN,0,Street Signs,104
+Install Multi-way Stop,04 - JAN,0,Street Signs,105
+Add a Left Turn Indication at a Signal,06 - MAR,1,Traffic Signals,106
+School Zone Sign,01 - OCT,0,Street Signs,107
+Dumpster Permit,05 - FEB,0,Other,108
+Check a Dark Signalized Intersection,06 - MAR,2,Traffic Signals,109
+Sign Relocation,01 - OCT,0,Street Signs,110
+Handicap Parking,05 - FEB,1,Other,111
+Check the Timing of an Approach,06 - MAR,14,Traffic Signals,112
+Stop Sign Missing/Damaged,01 - OCT,4,Street Signs,113
+Change Speed Limit,05 - FEB,0,Traffic Calming,114
+Install a New Signalized Intersection,06 - MAR,0,Traffic Signals,115
+Yield Sign Missing/Damaged,01 - OCT,1,Street Signs,116
+Dark Area Near Existing Street Light,05 - FEB,0,Street Lights,117
+Investigate a Signalized Intersection in Flash,06 - MAR,15,Traffic Signals,118
+Traffic Calming Request,01 - OCT,8,Traffic Calming,119
+Install a New Street Light,05 - FEB,0,Street Lights,120
+Replace a Signal Indication that is Not Working,06 - MAR,4,Traffic Signals,121
+Street Light Out,05 - FEB,20,Street Lights,122
+Add a Left Turn Indication at a Signal,01 - OCT,0,Traffic Signals,123
+Traffic Signal Needing Physical Repair,06 - MAR,3,Traffic Signals,124
+Leaning Light Pole,05 - FEB,5,Street Lights,125
+Basketball Goal on City ROW,07 - APR,5,Other,126
+Check a Dark Signalized Intersection,01 - OCT,3,Traffic Signals,127
+Bush or Objects Blocking Sight View,07 - APR,1,Other,128
+Check the Timing of an Approach,01 - OCT,6,Traffic Signals,129
+Refresh an Existing Marking,05 - FEB,2,Roadway Marking,130
+Install a New Signalized Intersection,01 - OCT,0,Traffic Signals,131
+Add a New Marking,05 - FEB,0,Roadway Marking,132
+Investigate a Signalized Intersection in Flash,01 - OCT,4,Traffic Signals,133
+Remove a Marking,05 - FEB,0,Roadway Marking,134
+Replace a Signal Indication that is Not Working,01 - OCT,6,Traffic Signals,135
+Change Sign Type,05 - FEB,0,Street Signs,136
+Traffic Signal Needing Physical Repair,01 - OCT,1,Traffic Signals,137
+Install Multi-way Stop,05 - FEB,0,Street Signs,138
+Dumpster Permit,07 - APR,0,Other,139
+Basketball Goal on City ROW,02 - NOV,0,Other,140
+Install New Sign,05 - FEB,8,Street Signs,141
+Handicap Parking,07 - APR,0,Other,142
+Bush or Objects Blocking Sight View,02 - NOV,4,Other,143
+Neighborhood Watch Sign,05 - FEB,0,Street Signs,144
+Change Speed Limit,07 - APR,2,Traffic Calming,145
+Dumpster Permit,02 - NOV,1,Other,146
+Repair Existing Sign,05 - FEB,16,Street Signs,147
+Dark Area Near Existing Street Light,07 - APR,0,Street Lights,148
+Handicap Parking,02 - NOV,0,Other,149
+Replace Missing Sign,05 - FEB,1,Street Signs,150
+Install a New Street Light,07 - APR,0,Street Lights,151
+Change Speed Limit,02 - NOV,1,Traffic Calming,152
+School Zone Sign,05 - FEB,0,Street Signs,153
+Street Light Out,07 - APR,15,Street Lights,154
+Dark Area Near Existing Street Light,02 - NOV,0,Street Lights,155
+Sign Relocation,05 - FEB,0,Street Signs,156
+Leaning Light Pole,07 - APR,2,Street Lights,157
+Install a New Street Light,02 - NOV,5,Street Lights,158
+Stop Sign Missing/Damaged,05 - FEB,2,Street Signs,159
+Refresh an Existing Marking,07 - APR,5,Roadway Marking,160
+Street Light Out,02 - NOV,18,Street Lights,161
+Yield Sign Missing/Damaged,05 - FEB,0,Street Signs,162
+Add a New Marking,07 - APR,1,Roadway Marking,163
+Leaning Light Pole,02 - NOV,2,Street Lights,164
+Traffic Calming Request,05 - FEB,8,Traffic Calming,165
+Remove a Marking,07 - APR,1,Roadway Marking,166
+Refresh an Existing Marking,02 - NOV,2,Roadway Marking,167
+Add a Left Turn Indication at a Signal,05 - FEB,0,Traffic Signals,168
+Change Sign Type,07 - APR,0,Street Signs,169
+Add a New Marking,02 - NOV,0,Roadway Marking,170
+Check a Dark Signalized Intersection,05 - FEB,1,Traffic Signals,171
+Install Multi-way Stop,07 - APR,0,Street Signs,172
+Remove a Marking,02 - NOV,0,Roadway Marking,173
+Check the Timing of an Approach,05 - FEB,13,Traffic Signals,174
+Install New Sign,07 - APR,12,Street Signs,175
+Change Sign Type,02 - NOV,0,Street Signs,176
+Install a New Signalized Intersection,05 - FEB,1,Traffic Signals,177
+Neighborhood Watch Sign,07 - APR,0,Street Signs,178
+Install Multi-way Stop,02 - NOV,1,Street Signs,179
+Investigate a Signalized Intersection in Flash,05 - FEB,4,Traffic Signals,180
+Repair Existing Sign,07 - APR,8,Street Signs,181
+Install New Sign,02 - NOV,2,Street Signs,182
+Replace a Signal Indication that is Not Working,05 - FEB,1,Traffic Signals,183
+Replace Missing Sign,07 - APR,0,Street Signs,184
+Neighborhood Watch Sign,02 - NOV,0,Street Signs,185
+Traffic Signal Needing Physical Repair,05 - FEB,2,Traffic Signals,186
+School Zone Sign,07 - APR,0,Street Signs,187
+Sign Relocation,07 - APR,0,Street Signs,188
+Stop Sign Missing/Damaged,07 - APR,7,Street Signs,189
+Yield Sign Missing/Damaged,07 - APR,0,Street Signs,190
+Traffic Calming Request,07 - APR,10,Traffic Calming,191
+Add a Left Turn Indication at a Signal,07 - APR,0,Traffic Signals,192
+Check a Dark Signalized Intersection,07 - APR,6,Traffic Signals,193
+Check the Timing of an Approach,07 - APR,14,Traffic Signals,194
+Install a New Signalized Intersection,07 - APR,0,Traffic Signals,195
+Investigate a Signalized Intersection in Flash,07 - APR,2,Traffic Signals,196
+Stop Sign Missing/Damaged,09 - JUN,0,Street Signs,197
+Change Sign Type,11 - AUG,0,Street Signs,198
+Install Multi-way Stop,11 - AUG,0,Street Signs,199
+Install New Sign,11 - AUG,0,Street Signs,200
+Neighborhood Watch Sign,11 - AUG,0,Street Signs,201
+Repair Existing Sign,11 - AUG,0,Street Signs,202
+Replace Missing Sign,11 - AUG,0,Street Signs,203
+School Zone Sign,11 - AUG,0,Street Signs,204
+Sign Relocation,11 - AUG,0,Street Signs,205
+Stop Sign Missing/Damaged,11 - AUG,0,Street Signs,206
+Yield Sign Missing/Damaged,11 - AUG,0,Street Signs,207
+Traffic Calming Request,11 - AUG,0,Traffic Calming,208
+Add a Left Turn Indication at a Signal,11 - AUG,0,Traffic Signals,209
+Check a Dark Signalized Intersection,11 - AUG,0,Traffic Signals,210
+Check the Timing of an Approach,11 - AUG,0,Traffic Signals,211
+Install a New Signalized Intersection,11 - AUG,0,Traffic Signals,212
+Investigate a Signalized Intersection in Flash,11 - AUG,0,Traffic Signals,213
+Replace a Signal Indication that is Not Working,11 - AUG,0,Traffic Signals,214
+Traffic Signal Needing Physical Repair,11 - AUG,0,Traffic Signals,215
+Basketball Goal on City ROW,12 - SEP,0,Other,216
+Bush or Objects Blocking Sight View,12 - SEP,0,Other,217
+Dumpster Permit,12 - SEP,0,Other,218
+Handicap Parking,12 - SEP,0,Other,219
+Change Speed Limit,12 - SEP,0,Traffic Calming,220
+Dark Area Near Existing Street Light,12 - SEP,0,Street Lights,221
+Install a New Street Light,12 - SEP,0,Street Lights,222
+Street Light Out,12 - SEP,0,Street Lights,223
+Leaning Light Pole,12 - SEP,0,Street Lights,224
+Refresh an Existing Marking,12 - SEP,0,Roadway Marking,225
+Add a New Marking,12 - SEP,0,Roadway Marking,226
+Remove a Marking,12 - SEP,0,Roadway Marking,227
+Change Sign Type,12 - SEP,0,Street Signs,228
+Install Multi-way Stop,12 - SEP,0,Street Signs,229
+Install New Sign,12 - SEP,0,Street Signs,230
+Neighborhood Watch Sign,12 - SEP,0,Street Signs,231
+Repair Existing Sign,12 - SEP,0,Street Signs,232
+Replace Missing Sign,12 - SEP,0,Street Signs,233
+School Zone Sign,12 - SEP,0,Street Signs,234
+Sign Relocation,12 - SEP,0,Street Signs,235
+Stop Sign Missing/Damaged,12 - SEP,0,Street Signs,236
+Yield Sign Missing/Damaged,12 - SEP,0,Street Signs,237
+Traffic Calming Request,12 - SEP,0,Traffic Calming,238
+Add a Left Turn Indication at a Signal,12 - SEP,0,Traffic Signals,239
+Check a Dark Signalized Intersection,12 - SEP,0,Traffic Signals,240
+Check the Timing of an Approach,12 - SEP,0,Traffic Signals,241
+Install a New Signalized Intersection,12 - SEP,0,Traffic Signals,242
+Investigate a Signalized Intersection in Flash,12 - SEP,0,Traffic Signals,243
+Replace a Signal Indication that is Not Working,12 - SEP,0,Traffic Signals,244
+Traffic Signal Needing Physical Repair,12 - SEP,0,Traffic Signals,245
+Yield Sign Missing/Damaged,09 - JUN,0,Street Signs,246
+Traffic Calming Request,09 - JUN,0,Traffic Calming,247
+Add a Left Turn Indication at a Signal,09 - JUN,0,Traffic Signals,248
+Check a Dark Signalized Intersection,09 - JUN,0,Traffic Signals,249
+Check the Timing of an Approach,09 - JUN,0,Traffic Signals,250
+Install a New Signalized Intersection,09 - JUN,0,Traffic Signals,251
+Investigate a Signalized Intersection in Flash,09 - JUN,0,Traffic Signals,252
+Replace a Signal Indication that is Not Working,09 - JUN,0,Traffic Signals,253
+Traffic Signal Needing Physical Repair,09 - JUN,0,Traffic Signals,254
+Basketball Goal on City ROW,10 - JUL,0,Other,255
+Bush or Objects Blocking Sight View,10 - JUL,0,Other,256
+Dumpster Permit,10 - JUL,0,Other,257
+Repair Existing Sign,02 - NOV,7,Street Signs,258
+Handicap Parking,10 - JUL,0,Other,259
+Replace Missing Sign,02 - NOV,2,Street Signs,260
+Basketball Goal on City ROW,06 - MAR,3,Other,261
+Change Speed Limit,10 - JUL,0,Traffic Calming,262
+School Zone Sign,02 - NOV,0,Street Signs,263
+Bush or Objects Blocking Sight View,06 - MAR,0,Other,264
+Dark Area Near Existing Street Light,10 - JUL,0,Street Lights,265
+Sign Relocation,02 - NOV,0,Street Signs,266
+Dumpster Permit,06 - MAR,0,Other,267
+Install a New Street Light,10 - JUL,0,Street Lights,268
+Stop Sign Missing/Damaged,02 - NOV,1,Street Signs,269
+Handicap Parking,06 - MAR,0,Other,270
+Street Light Out,10 - JUL,0,Street Lights,271
+Yield Sign Missing/Damaged,02 - NOV,0,Street Signs,272
+Change Speed Limit,06 - MAR,0,Traffic Calming,273
+Leaning Light Pole,10 - JUL,0,Street Lights,274
+Dark Area Near Existing Street Light,06 - MAR,0,Street Lights,275
+Refresh an Existing Marking,10 - JUL,0,Roadway Marking,276
+Add a New Marking,10 - JUL,0,Roadway Marking,277
+Remove a Marking,10 - JUL,0,Roadway Marking,278
+Change Sign Type,10 - JUL,0,Street Signs,279
+Install Multi-way Stop,10 - JUL,0,Street Signs,280
+Install New Sign,10 - JUL,0,Street Signs,281
+Neighborhood Watch Sign,10 - JUL,0,Street Signs,282
+Repair Existing Sign,10 - JUL,0,Street Signs,283
+Replace Missing Sign,10 - JUL,0,Street Signs,284
+School Zone Sign,10 - JUL,0,Street Signs,285
+Sign Relocation,10 - JUL,0,Street Signs,286
+Stop Sign Missing/Damaged,10 - JUL,0,Street Signs,287
+Yield Sign Missing/Damaged,10 - JUL,0,Street Signs,288
+Traffic Calming Request,10 - JUL,0,Traffic Calming,289
+Add a Left Turn Indication at a Signal,10 - JUL,0,Traffic Signals,290
+Check a Dark Signalized Intersection,10 - JUL,0,Traffic Signals,291
+Check the Timing of an Approach,10 - JUL,0,Traffic Signals,292
+Install a New Signalized Intersection,10 - JUL,0,Traffic Signals,293
+Investigate a Signalized Intersection in Flash,10 - JUL,0,Traffic Signals,294
+Replace a Signal Indication that is Not Working,10 - JUL,0,Traffic Signals,295
+Traffic Signal Needing Physical Repair,10 - JUL,0,Traffic Signals,296
+Basketball Goal on City ROW,11 - AUG,0,Other,297
+Bush or Objects Blocking Sight View,11 - AUG,0,Other,298
+Dumpster Permit,11 - AUG,0,Other,299
+Handicap Parking,11 - AUG,0,Other,300
+Change Speed Limit,11 - AUG,0,Traffic Calming,301
+Dark Area Near Existing Street Light,11 - AUG,0,Street Lights,302
+Install a New Street Light,11 - AUG,0,Street Lights,303
+Street Light Out,11 - AUG,0,Street Lights,304
+Leaning Light Pole,11 - AUG,0,Street Lights,305
+Refresh an Existing Marking,11 - AUG,0,Roadway Marking,306
+Add a New Marking,11 - AUG,0,Roadway Marking,307
+Remove a Marking,11 - AUG,0,Roadway Marking,308
+Replace a Signal Indication that is Not Working,07 - APR,3,Traffic Signals,309
+Traffic Signal Needing Physical Repair,07 - APR,5,Traffic Signals,310
+Basketball Goal on City ROW,08 - MAY,4,Other,311
+Bush or Objects Blocking Sight View,08 - MAY,2,Other,312
+Dumpster Permit,08 - MAY,0,Other,313
+Handicap Parking,08 - MAY,0,Other,314
+Change Speed Limit,08 - MAY,1,Traffic Calming,315
+Dark Area Near Existing Street Light,08 - MAY,0,Street Lights,316
+Install a New Street Light,08 - MAY,1,Street Lights,317
+Street Light Out,08 - MAY,18,Street Lights,318
+Leaning Light Pole,08 - MAY,0,Street Lights,319
+Refresh an Existing Marking,08 - MAY,1,Roadway Marking,320
+Add a New Marking,08 - MAY,1,Roadway Marking,321
+Remove a Marking,08 - MAY,0,Roadway Marking,322
+Change Sign Type,08 - MAY,0,Street Signs,323
+Install Multi-way Stop,08 - MAY,1,Street Signs,324
+Install New Sign,08 - MAY,5,Street Signs,325
+Neighborhood Watch Sign,08 - MAY,0,Street Signs,326
+Repair Existing Sign,08 - MAY,9,Street Signs,327
+Replace Missing Sign,08 - MAY,4,Street Signs,328
+School Zone Sign,08 - MAY,0,Street Signs,329
+Sign Relocation,08 - MAY,0,Street Signs,330
+Stop Sign Missing/Damaged,08 - MAY,4,Street Signs,331
+Yield Sign Missing/Damaged,08 - MAY,0,Street Signs,332
+Traffic Calming Request,08 - MAY,11,Traffic Calming,333
+Add a Left Turn Indication at a Signal,08 - MAY,2,Traffic Signals,334
+Check a Dark Signalized Intersection,08 - MAY,4,Traffic Signals,335
+Check the Timing of an Approach,08 - MAY,18,Traffic Signals,336
+Install a New Signalized Intersection,08 - MAY,1,Traffic Signals,337
+Investigate a Signalized Intersection in Flash,08 - MAY,7,Traffic Signals,338
+Replace a Signal Indication that is Not Working,08 - MAY,0,Traffic Signals,339
+Traffic Signal Needing Physical Repair,08 - MAY,1,Traffic Signals,340
+Basketball Goal on City ROW,09 - JUN,0,Other,341
+Bush or Objects Blocking Sight View,09 - JUN,0,Other,342
+Dumpster Permit,09 - JUN,0,Other,343
+Handicap Parking,09 - JUN,0,Other,344
+Change Speed Limit,09 - JUN,0,Traffic Calming,345
+Dark Area Near Existing Street Light,09 - JUN,0,Street Lights,346
+Install a New Street Light,09 - JUN,0,Street Lights,347
+Street Light Out,09 - JUN,0,Street Lights,348
+Leaning Light Pole,09 - JUN,0,Street Lights,349
+Refresh an Existing Marking,09 - JUN,0,Roadway Marking,350
+Add a New Marking,09 - JUN,0,Roadway Marking,351
+Remove a Marking,09 - JUN,0,Roadway Marking,352
+Change Sign Type,09 - JUN,0,Street Signs,353
+Install Multi-way Stop,09 - JUN,0,Street Signs,354
+Install New Sign,09 - JUN,0,Street Signs,355
+Neighborhood Watch Sign,09 - JUN,0,Street Signs,356
+Repair Existing Sign,09 - JUN,0,Street Signs,357
+Replace Missing Sign,09 - JUN,0,Street Signs,358
+School Zone Sign,09 - JUN,0,Street Signs,359
+Sign Relocation,09 - JUN,0,Street Signs,360
