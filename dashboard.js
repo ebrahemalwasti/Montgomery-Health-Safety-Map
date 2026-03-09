@@ -171,3 +171,189 @@ function flyTo(f) {
   const lngs = c.filter((_, i) => i % 2 === 0), lats = c.filter((_, i) => i % 2 === 1);
   map.flyTo({ center: [(Math.min(...lngs) + Math.max(...lngs)) / 2, (Math.min(...lats) + Math.max(...lats)) / 2], zoom: 13, duration: 1100 });
 }
+
+// ═══════════════════════════════════════════════════════
+// 911 TREND CHART  (Chart.js)
+// ═══════════════════════════════════════════════════════
+function build911Chart() {
+  const canvas = $('chart-911');
+  if (!canvas || typeof Chart === 'undefined') return;
+
+  const rows = window._calls911Data || [];
+
+  // Month order for sorting
+  const MONTH_IDX = {
+    '1 - january': 1, '2 - february': 2, '3 - march': 3,
+    '4 - april': 4,   '5 - may': 5,      '6 - june': 6,
+    '7 - july': 7,    '8 - august': 8,   '9 - september': 9,
+    '10 - october': 10,'11 - november': 11,'12 - december': 12,
+  };
+  const MONTH_LABELS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // Aggregate Emergency and Non-Emergency by month (using Call_Count_By_Origin Incoming)
+  const emerg = {}, nonEmerg = {};
+  rows.forEach(r => {
+    const cat = (r.Call_Category || '').toLowerCase().trim();
+    const mKey = (r.Month || '').toLowerCase().trim();
+    const mNum = MONTH_IDX[mKey];
+    if (!mNum) return;
+    try {
+      const cnt = parseInt(r.Call_Count_By_Origin || '0', 10);
+      if (cat === 'emergency') emerg[mNum] = (emerg[mNum] || 0) + cnt;
+      else if (cat === 'non-emergency') nonEmerg[mNum] = (nonEmerg[mNum] || 0) + cnt;
+    } catch {}
+  });
+
+  const months = [...new Set([...Object.keys(emerg), ...Object.keys(nonEmerg)])].map(Number).sort((a, b) => a - b);
+  if (!months.length) {
+    // No data — show fallback message
+    canvas.parentElement.innerHTML = '<div style="color:var(--text-3);font-size:12px;text-align:center;padding:16px">No 911 trend data available</div>';
+    return;
+  }
+
+  const labels = months.map(m => MONTH_LABELS[m - 1]);
+  const eData  = months.map(m => emerg[m]    || 0);
+  const nData  = months.map(m => nonEmerg[m] || 0);
+
+  if (chart911) { chart911.destroy(); chart911 = null; }
+
+  chart911 = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Emergency',
+          data: eData,
+          borderColor: '#dc2626',
+          backgroundColor: 'rgba(220,38,38,0.1)',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true,
+          pointRadius: 4,
+        },
+        {
+          label: 'Non-Emergency',
+          data: nData,
+          borderColor: '#2563eb',
+          backgroundColor: 'rgba(37,99,235,0.08)',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true,
+          pointRadius: 4,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { family: 'DM Sans', size: 11 } } },
+        tooltip: { mode: 'index', intersect: false },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10, family: 'DM Mono' } } },
+        y: { grid: { color: 'rgba(0,0,0,.05)' }, ticks: { font: { size: 10, family: 'DM Mono' } } },
+      }
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// AI CITY INTELLIGENCE STORIES
+// ═══════════════════════════════════════════════════════
+function buildAIStories() {
+  const wrap = $('ai-stories');
+  if (!wrap || !gData) return;
+
+  const F = gData.features.map(f => f.properties);
+
+  // Find top risk zone by Future_Risk_Score
+  const withFrs = F.filter(p => p.Future_Risk_Score != null).sort((a, b) => b.Future_Risk_Score - a.Future_Risk_Score);
+  const rising  = F.filter(p => p.Trend_Direction === 'Rising');
+  const noPark  = F.filter(p => (p.nearby_parks || 0) === 0 && p.RiskLevel === 'High');
+
+  const stories = [];
+
+  // Story 1 — highest predicted risk zone
+  if (withFrs.length) {
+    const top = withFrs[0];
+    stories.push({
+      icon: '🚨',
+      title: `Zone ${top.grid_id} — Highest Predicted Risk`,
+      text: top.AI_Insight || `Zone ${top.grid_id} has the highest predicted risk score of ${top.Future_Risk_Score}/100.`
+    });
+  }
+
+  // Story 2 — rising trend summary
+  if (rising.length) {
+    const pct = ((rising.length / F.length) * 100).toFixed(0);
+    stories.push({
+      icon: '⬆️',
+      title: `${rising.length} Zones Show Rising Trend (${pct}%)`,
+      text: `Emergency call intensity is trending upward city-wide (+3.9%/month). These ${rising.length} zones have elevated local pressure that amplifies the rising trend.`
+    });
+  }
+
+  // Story 3 — no park access + high risk
+  if (noPark.length) {
+    stories.push({
+      icon: '🌳',
+      title: `${noPark.length} High-Risk Zones Lack Park Access`,
+      text: `${noPark.length} high-risk zones have no parks within 2 km. Research links green space access to reduced emergency call rates. Targeted park investment could lower long-term risk.`
+    });
+  }
+
+  // Story 4 — food safety gaps
+  const lowFood = F.filter(p => (p.food_safety_score || 0) < 90 && p.food_safety_score > 0);
+  if (lowFood.length) {
+    const avgFood = (lowFood.reduce((a, p) => a + p.food_safety_score, 0) / lowFood.length).toFixed(1);
+    stories.push({
+      icon: '🍽️',
+      title: `${lowFood.length} Zones Have Below-Average Food Safety`,
+      text: `Average inspection score in affected zones: ${avgFood}/100. Low food safety correlates with higher health burden and emergency service demand.`
+    });
+  }
+
+  // Story 5 — pharmacy deserts
+  const noPharm = F.filter(p => (p.nearby_pharmacies || 0) === 0);
+  if (noPharm.length) {
+    stories.push({
+      icon: '💊',
+      title: `${noPharm.length} Zones Without Nearby Pharmacies`,
+      text: `${noPharm.length} grid zones have no pharmacies within 2 km. Pharmacy access is critical for medication adherence and public health outcomes.`
+    });
+  }
+
+  wrap.innerHTML = stories.map(s => `
+    <div class="ai-card">
+      <div class="ai-card-icon">${s.icon}</div>
+      <div class="ai-card-body">
+        <div class="ai-card-title">${s.title}</div>
+        <div class="ai-card-text">${s.text}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+// FUTURE RISK PREDICTION STATS
+// ═══════════════════════════════════════════════════════
+function computeFutureRiskStats() {
+  if (!gData) return;
+  const F = gData.features.map(f => f.properties);
+  const withFrs = F.filter(p => p.Future_Risk_Score != null);
+  if (!withFrs.length) return;
+
+  const avgFrs   = (withFrs.reduce((a, p) => a + +p.Future_Risk_Score, 0) / withFrs.length).toFixed(1);
+  const nRising  = F.filter(p => p.Trend_Direction === 'Rising').length;
+  const nHigh70  = withFrs.filter(p => +p.Future_Risk_Score > 70).length;
+
+  set('frs-avg',     avgFrs);
+  set('frs-rising',  nRising.toLocaleString());
+  set('frs-high70',  nHigh70.toLocaleString());
+
+  // Insight cards
+  set('ic-future', avgFrs);
+  set('ic-trend',  nRising.toLocaleString());
+}

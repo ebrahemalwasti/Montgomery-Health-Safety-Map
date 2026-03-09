@@ -7,6 +7,8 @@
 <script src="https://unpkg.com/maplibre-gl@4.1.3/dist/maplibre-gl.js"></script>
 <link  href="https://unpkg.com/maplibre-gl@4.1.3/dist/maplibre-gl.css" rel="stylesheet"/>
 <link  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -83,6 +85,50 @@
         <div id="ins-rows" style="display:flex;flex-direction:column;gap:5px;"></div>
       </div>
 
+      <!-- EMERGENCY RESOURCE LAYERS -->
+      <div class="sb-sec">
+        <div class="sb-hd">Emergency Resource Layers</div>
+        <div class="rl-list">
+          <label class="rl-row"><input type="checkbox" id="chk-shelters"   onchange="toggleResourceLayer('rl-shelters')"><span class="rl-dot" style="background:#dc2626"></span>Tornado Shelters</label>
+          <label class="rl-row"><input type="checkbox" id="chk-pharmacies" onchange="toggleResourceLayer('rl-pharmacies')"><span class="rl-dot" style="background:#2563eb"></span>Pharmacies</label>
+          <label class="rl-row"><input type="checkbox" id="chk-parks"      onchange="toggleResourceLayer('rl-parks')"><span class="rl-dot" style="background:#16a34a"></span>Parks &amp; Trails</label>
+          <label class="rl-row"><input type="checkbox" id="chk-community"  onchange="toggleResourceLayer('rl-community')"><span class="rl-dot" style="background:#9333ea"></span>Community Centers</label>
+          <label class="rl-row"><input type="checkbox" id="chk-fire"       onchange="toggleResourceLayer('rl-fire')"><span class="rl-dot" style="background:#ea580c"></span>Fire Stations</label>
+          <label class="rl-row"><input type="checkbox" id="chk-police"     onchange="toggleResourceLayer('rl-police')"><span class="rl-dot" style="background:#1e3a8a"></span>Police Facilities</label>
+          <label class="rl-row"><input type="checkbox" id="chk-poi"        onchange="toggleResourceLayer('rl-poi')"><span class="rl-dot" style="background:#64748b"></span>Points of Interest</label>
+        </div>
+      </div>
+
+      <!-- CITY INTELLIGENCE INSIGHTS -->
+      <div class="sb-sec">
+        <div class="sb-hd">City Intelligence Insights</div>
+        <div id="ai-stories"><div class="ai-loading">Generating insights…</div></div>
+      </div>
+
+      <!-- EMERGENCY TRENDS CHART -->
+      <div class="sb-sec">
+        <div class="sb-hd">Emergency Trends 2025</div>
+        <div class="chart-wrap">
+          <canvas id="chart-911"></canvas>
+        </div>
+      </div>
+
+      <!-- FUTURE RISK PREDICTION -->
+      <div class="sb-sec">
+        <div class="sb-hd">Future Risk Prediction</div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-v c-amber" id="frs-avg">—</div><div class="stat-l">Avg Predicted</div></div>
+          <div class="stat-card"><div class="stat-v" style="color:#f97316" id="frs-rising">—</div><div class="stat-l">Rising Trend</div></div>
+          <div class="stat-card"><div class="stat-v c-red" id="frs-high70">—</div><div class="stat-l">Score &gt; 70</div></div>
+        </div>
+      </div>
+
+      <!-- VIEWPORT ANALYTICS -->
+      <div class="sb-sec">
+        <div class="sb-hd">Viewport Analytics</div>
+        <div id="viewport-stats"><div class="ai-loading">Pan or zoom the map…</div></div>
+      </div>
+
     </div><!-- /sidebar -->
 
     <!-- MAP -->
@@ -97,6 +143,8 @@
         <button class="cb"    id="c-zhr"    onclick="zoomHighRisk()"><span class="cb-ic">🎯</span> Zoom High Risk</button>
         <button class="cb"    id="c-filter" onclick="toggleFilter()"><span class="cb-ic">🔍</span> Only High Risk</button>
         <button class="cb"               onclick="resetView()"><span class="cb-ic">↩️</span> Reset View</button>
+        <button class="cb" id="c-future"  onclick="toggleFutureRisk()"><span class="cb-ic">🔮</span> Future Risk</button>
+        <button class="cb" id="c-nearest" onclick="toggleNearestResource()"><span class="cb-ic">🏥</span> Nearest Resource</button>
       </div>
 
       <!-- INSIGHT CARDS -->
@@ -105,6 +153,8 @@
         <div class="ic"><div class="ic-lb">Highest Risk Zone</div><div class="ic-v c-red" id="ic-worst">—</div><div class="ic-sub" id="ic-ws">score —</div></div>
         <div class="ic"><div class="ic-lb">Safest Zone</div><div class="ic-v c-grn" id="ic-best">—</div><div class="ic-sub" id="ic-bs">score —</div></div>
         <div class="ic"><div class="ic-lb">Hotspots</div><div class="ic-v c-amber" id="ic-hs">—</div><div class="ic-sub">high-risk clusters</div></div>
+        <div class="ic"><div class="ic-lb">Avg Predicted Risk</div><div class="ic-v" style="color:#f97316" id="ic-future">—</div><div class="ic-sub">future score</div></div>
+        <div class="ic"><div class="ic-lb">Rising Trends</div><div class="ic-v" style="color:#ea580c" id="ic-trend">—</div><div class="ic-sub">zones trending up</div></div>
       </div>
 
       <!-- LEGEND -->
@@ -121,6 +171,10 @@
             <div class="leg-cat"><div class="leg-sw" style="background:var(--safe)"></div>Low Risk</div>
           </div>
         </div>
+        <div id="leg-future" style="display:none">
+          <div class="leg-grad leg-grad-future"></div>
+          <div class="leg-lbls"><span class="leg-lbl">0</span><span class="leg-lbl">25</span><span class="leg-lbl">50</span><span class="leg-lbl">75</span><span class="leg-lbl">100</span></div>
+        </div>
       </div>
 
       <!-- TOOLTIP -->
@@ -128,6 +182,7 @@
         <div class="tt-zid" id="tt-zid">ZONE —</div>
         <div class="tt-score" id="tt-sc">—</div>
         <div class="tt-risk"  id="tt-rk">—</div>
+        <div class="tt-frs"   id="tt-frs" style="display:none"></div>
       </div>
 
     </div><!-- /map-wrap -->
