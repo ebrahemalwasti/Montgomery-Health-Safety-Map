@@ -2,8 +2,16 @@
 // UTILS
 // ═══════════════════════════════════════════════════════
 
+/**
+ * Shorthand for document.getElementById.
+ * Usage: $('my-id') instead of document.getElementById('my-id')
+ * Note: This is NOT jQuery — it's a lightweight DOM helper.
+ * @param {string} id - The element ID to look up
+ * @returns {HTMLElement|null}
+ */
 const $ = id => document.getElementById(id);
 
+/** Set text content of element by ID (no-op if element not found) */
 const set = (id, v) => { const e = $(id); if (e) e.textContent = v; };
 
 function showErr(msg) {

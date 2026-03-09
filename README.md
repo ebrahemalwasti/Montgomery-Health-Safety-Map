@@ -1,69 +1,131 @@
-# Montgomery-Health-Safety-Map
-A smart map for Montgomery that shows health and safety levels across the city. Explore risk zones, hotspots, and neighborhood insights through an interactive, data‑driven dashboard.
-# Montgomery Health & Safety Map
+# 🗺️ Montgomery Urban Health & Safety Navigator
 
-## Project Overview
+> **AI-powered civic intelligence platform** that analyzes 10+ City of Montgomery datasets to generate neighborhood-level health & safety scores, predictive risk assessments, and actionable intervention recommendations.
 
-This project is an **interactive geospatial intelligence platform for Montgomery, Alabama**. 
+![Montgomery Safety Navigator Demo](https://img.shields.io/badge/Status-Live-brightgreen) ![MapLibre GL](https://img.shields.io/badge/Map-MapLibre%20GL%20JS-blue) ![Python](https://img.shields.io/badge/Pipeline-Python%20%7C%20Pandas-yellow) ![License](https://img.shields.io/badge/License-MIT-green)
 
-The platform visualizes health and safety scores across thousands of city zones using spatial data. By mapping these critical metrics at a granular level, the goal of this project is to support:
-- Smarter urban planning
-- Better risk awareness
-- Improved community well-being
+## 🎯 What It Does
 
-## Why We Built This
+The Montgomery Safety Navigator transforms raw civic open data into an interactive, neighborhood-level intelligence dashboard that:
 
-Cities often lack clear, neighborhood-level insights into health and safety conditions. While macro-level data exists, it is frequently difficult to translate into actionable, localized strategies.
+- **Scores every grid zone** (0–100) based on weighted analysis of emergency calls, traffic infrastructure, population trends, and food safety
+- **Predicts future risk** using trend detection and multi-factor heuristic modeling
+- **Identifies resource gaps** — pharmacy deserts, park access deficits, shelter coverage blind spots
+- **Generates AI insights** — per-zone natural-language explanations of risk drivers and recommended interventions
+- **Provides real-time viewport analytics** — stats update dynamically based on what the user is viewing
 
-There is a growing need for accessible, data-driven tools designed for city officials, planners, researchers, and residents. This project bridges that gap by helping to easily identify:
-- High-risk zones that require immediate attention
-- Service gaps in critical urban infrastructure
-- Broad urban health patterns and geographic disparities
+## 🏗️ Architecture
 
-## Key Features
+```
+┌─────────────────────────────────────────────────┐
+│                 DATA PIPELINE (Python)           │
+│  911 Calls ─┐                                    │
+│  Traffic ───┤  Weighted     Spatial    AI        │
+│  Population─┤  Composite →  Proximity→ Insight → GeoJSON
+│  Food Safety┤  Score        Analysis   Generation│
+│  Facilities─┘  (0-100)     (Haversine)           │
+└─────────────────────────────────────────────────┘
+                        ↓
+┌─────────────────────────────────────────────────┐
+│              CLIENT APP (Browser)                │
+│  MapLibre GL JS  │  Dashboard  │  Analytics      │
+│  Choropleth Map  │  Donut/Bar  │  Viewport Stats │
+│  Hover/Click     │  Zone List  │  Trend Charts   │
+│  Nearest Feature │  Insights   │  Mobile Ready   │
+└─────────────────────────────────────────────────┘
+```
 
-- **Interactive Map:** Color-coded risk levels across the city grid.
-- **Score Map:** Detailed visualization of calculated health and safety scores.
-- **Risk Map:** Explicit highlighting of high-risk zones.
-- **Hotspot Detection:** Visual clustering of critical areas.
-- **City-Wide Statistics Dashboard:** Quick, high-level metrics at a glance.
-- **Risk Distribution Charts:** Visual breakdowns of risk categories.
-- **Score Distribution Charts:** Statistical spread of zone scores.
-- **Deep Inspection:** Ability to zoom into specific neighborhoods and inspect individual zones for detailed metrics.
-- **Client-Side Architecture:** Fully browser-based performance with no backend server required.
+## 📊 Data Sources
 
-## Data Sources
+All datasets sourced from the **[City of Montgomery Open Data Portal](https://data.montgomeryal.gov/)**:
 
-The platform is powered by robust **GeoJSON datasets** that contain spatial grid zones fused with various health and safety indicators. 
+| Dataset | Description | Used For |
+|---------|-------------|----------|
+| 911 Calls | Emergency/non-emergency call volumes by month | Emergency pressure scoring |
+| Traffic Engineering Service Requests | Street lights, signs, signals, road markings | Infrastructure risk assessment |
+| Daily Population Trends | Population flux patterns | Population density factor |
+| Food Scores | Restaurant health inspection scores | Food safety component |
+| Fire Stations | Fire station locations | Proximity analysis |
+| Police Facilities | Police facility locations | Proximity analysis |
+| Community Centers | Community center locations | Resource access scoring |
+| Pharmacy Locator | Pharmacy locations | Healthcare access / desert detection |
+| Park and Trail | Parks and trails | Green space access analysis |
+| Tornado Shelter | Tornado shelter locations | Emergency preparedness |
+| Point of Interest | City points of interest | Supplementary context |
+| City Limit | Municipal boundary | Map boundary overlay |
+| SDE Nuisance | Nuisance complaints | Environmental quality factor |
 
-All heavy geospatial processing and scoring are handled offline. The resulting optimized dataset is then loaded directly into the browser for seamless, high-performance visualization.
+## 🧠 Scoring Algorithm
 
-## Tech Stack
+Each grid zone receives a **composite Health & Safety Score (0–100)** calculated as:
 
-- **HTML / CSS / JavaScript:** Core frontend structure, styling, and logic.
-- **Leaflet (or CARTO):** For rendering the interactive map and geospatial layers.
-- **Chart.js:** For rendering dynamic, responsive data charts.
-- **GeoJSON:** The primary data format for spatial boundaries and attributes.
+```
+Score = 0.40 × Emergency_Factor
+      + 0.25 × Traffic_Factor
+      + 0.20 × Population_Factor
+      + 0.15 × Food_Safety_Factor
+```
 
-## How It Works
+**Risk Classification:**
+- 🔴 **High Risk**: Score < 40
+- 🟡 **Medium Risk**: Score 40–69
+- 🟢 **Low Risk**: Score ≥ 70
 
-1. The map application loads the pre-processed GeoJSON zone data on initialization.
-2. Each zone contains a pre-calculated Health & Safety score.
-3. Risk categories (e.g., High, Medium, Low) are dynamically derived from established score thresholds.
-4. Various map layers render the data into distinct views, such as score maps, risk maps, and hotspots.
-5. The UI charts update dynamically based on the loaded dataset to reflect the current visual state.
+**Spatial Analysis** uses Haversine distance with bounding-box pre-filtering to compute proximity to nearest:
+- Fire Station, Police Facility, Pharmacy, Tornado Shelter, Park, Community Center
 
-## Live Demo
+## 🛠️ Tech Stack
 
-Explore the interactive dashboard here:  
-**[Montgomery Health & Safety Map - Live Demo](https://ebrahemalwasti.github.io/Montgomery-Health-Safety-Map/)**
+| Component | Technology |
+|-----------|-----------|
+| **Map Engine** | [MapLibre GL JS](https://maplibre.org/) v4.1.3 |
+| **Base Map** | CARTO Positron (light, clean aesthetic) |
+| **Data Pipeline** | Python 3.x + Pandas + NumPy |
+| **Charts** | SVG (custom donut) + Chart.js (line charts) |
+| **Styling** | Custom CSS Design System (CSS Variables, DM Sans/Mono) |
+| **Data Format** | GeoJSON (enriched, ~10MB) |
+| **Deployment** | Static files — no server required |
 
-We encourage you to interact with the map, toggle layers, and click on individual zones to see the underlying data explanations.
+## 🚀 Quick Start
 
-## How to Run Locally
+### View the Map
+1. Clone the repository
+2. Open `index.html` in a browser (or use a local server)
+3. The app loads the enriched GeoJSON and renders automatically
 
-Because the application is fully client-side, running it locally is incredibly simple. No server setup or package installation is required.
+### Regenerate Data (Optional)
+```bash
+pip install -r requirements.txt
+python data_pipeline_upgrade.py
+```
 
-1. Clone the repository to your local machine:
-   ```bash
-   git clone [https://github.com/ebrahemalwasti/Montgomery-Health-Safety-Map.git](https://github.com/ebrahemalwasti/Montgomery-Health-Safety-Map.git)
+## 📱 Features
+
+- **Score Map** — Continuous color gradient from red (dangerous) to green (safe)
+- **Risk Map** — Categorical view (High / Medium / Low)
+- **Hotspot Detection** — Highlights bottom 15% zones
+- **High Risk Filter** — Isolate only high-risk areas
+- **Zoom to High Risk** — Auto-fit map to worst zones
+- **Click for Details** — Full AI analysis popup per zone
+- **Nearest Facility** — Dashed line to closest shelter/pharmacy
+- **Viewport Analytics** — Live stats for visible area
+- **Mobile Responsive** — Sidebar collapses on small screens
+
+## 🗺️ Future Roadmap
+
+- [ ] **Real-time data ingestion** — Automated pipeline to pull fresh data from Montgomery's API
+- [ ] **ML-based predictions** — Replace heuristic scoring with trained gradient boosting model
+- [ ] **Citizen reporting** — Allow residents to flag issues and annotate zones
+- [ ] **Historical trend comparison** — Month-over-month and year-over-year analytics
+- [ ] **Multi-city support** — Parameterize pipeline for any city with an open data portal
+- [ ] **Tile server backend** — Replace static GeoJSON with vector tiles for faster load times
+- [ ] **Accessibility audit** — WCAG 2.1 AA compliance for screen readers and keyboard nav
+- [ ] **Export/Share** — PDF reports and shareable zone links for city officials
+
+## 📄 License
+
+MIT License — see [LICENSE](LICENSE) for details.
+
+---
+
+**Built for the WWV 2026 Hackathon** | Montgomery, Alabama 🏛️
