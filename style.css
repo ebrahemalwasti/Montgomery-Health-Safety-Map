@@ -338,3 +338,97 @@ html, body { width:100%; height:100%; background:var(--bg); color:var(--text-1);
 /* ─── NEAREST RESOURCE line style note ───────────────────
    (MapLibre line styling is done in JS via paint properties)
    The dashed lines show shelter (red) and pharmacy (blue) distance. */
+
+/* ─── MOBILE RESPONSIVE ──────────────────────────────── */
+@media (max-width: 768px) {
+  #body { flex-direction: column; }
+  
+  #sidebar {
+    width: 100%;
+    max-height: 35vh;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    order: 2;
+  }
+  
+  #map-wrap {
+    order: 1;
+    min-height: 50vh;
+  }
+  
+  #topbar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 44px;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  
+  .tb-badge { display: none; }
+  .tb-div { display: none; }
+  
+  .tb-logo { font-size: 13px; }
+  
+  .tb-pill { font-size: 10px; padding: 3px 8px; }
+  
+  #ctrls {
+    top: 8px;
+    left: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: calc(100% - 16px);
+  }
+  
+  .cb {
+    font-size: 10px;
+    padding: 5px 9px;
+    gap: 4px;
+  }
+  
+  .cb-ic { font-size: 11px; }
+  
+  #ins-cards {
+    top: auto;
+    bottom: 8px;
+    right: 8px;
+    flex-direction: row;
+    gap: 4px;
+    overflow-x: auto;
+    max-width: calc(100% - 16px);
+  }
+  
+  .ic {
+    min-width: 120px;
+    padding: 8px 10px;
+    flex-shrink: 0;
+  }
+  
+  .ic-v { font-size: 16px; }
+  .ic-lb { font-size: 8px; }
+  
+  #legend {
+    bottom: 60px;
+    left: 8px;
+    padding: 9px 11px;
+    min-width: 150px;
+  }
+  
+  .stat-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .stat-v { font-size: 18px; }
+  
+  .sb-sec { padding: 12px; }
+}
+
+@media (max-width: 480px) {
+  .tb-pill:not(.danger) { display: none; }
+  
+  #ins-cards { display: none; }
+  
+  #ctrls .cb span.cb-ic + span:not(.cb-ic) {
+    display: none;
+  }
+  
+  .cb { padding: 6px 8px; }
+  .cb-ic { font-size: 14px; }
+}
