@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Montgomery Urban Health & Safety Navigator</title>
+<script src="https://unpkg.com/maplibre-gl@4.1.3/dist/maplibre-gl.js"></script>
+<link  href="https://unpkg.com/maplibre-gl@4.1.3/dist/maplibre-gl.css" rel="stylesheet"/>
+<link  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-icon">🗺️</div>
+  <div class="ld-title">Montgomery Safety Navigator</div>
+  <div class="ld-sub">Loading city intelligence…</div>
+  <div class="ld-track"><div class="ld-fill"></div></div>
+</div>
+
+<div id="err-banner"></div>
+
+<div id="app">
+
+  <!-- TOPBAR -->
+  <div id="topbar">
+    <div class="tb-logo">
+      <div class="tb-dot"></div>
+      Montgomery Safety Navigator
+    </div>
+    <span class="tb-badge">AI Edition Montgomery Safety Navigator</span>
+    <div class="tb-div"></div>
+    <div class="tb-spacer"></div>
+    <div class="tb-pill"><span class="tb-live"></span> Live</div>
+    <div class="tb-pill">Zones <span class="val" id="nb-zones">—</span></div>
+    <div class="tb-pill">Avg <span class="val" id="nb-avg">—</span></div>
+    <div class="tb-pill danger">High Risk <span class="val" id="nb-high">—</span></div>
+  </div>
+
+  <!-- BODY -->
+  <div id="body">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+
+      <div class="sb-sec">
+        <div class="sb-hd">City Summary</div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-v c-blue" id="s-total">—</div><div class="stat-l">Total Zones</div></div>
+          <div class="stat-card"><div class="stat-v c-dark" id="s-avg">—</div><div class="stat-l">Avg Score</div></div>
+          <div class="stat-card"><div class="stat-v c-red"  id="s-high">—</div><div class="stat-l">High Risk</div></div>
+          <div class="stat-card"><div class="stat-v c-grn"  id="s-low">—</div><div class="stat-l">Low Risk</div></div>
+        </div>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-hd">Risk Distribution</div>
+        <div id="donut-wrap"><svg id="donut" width="108" height="108" viewBox="0 0 108 108"></svg></div>
+        <div class="risk-rows" style="margin-top:8px">
+          <div class="rr"><div class="rr-dot" style="background:var(--danger)"></div><div class="rr-name" style="color:var(--danger)">High</div><div class="rr-track"><div class="rr-fill" id="rf-h" style="background:var(--danger)"></div></div><div class="rr-pct" id="rp-h">0%</div></div>
+          <div class="rr"><div class="rr-dot" style="background:var(--warn)"></div><div class="rr-name"  style="color:var(--warn)">Medium</div><div class="rr-track"><div class="rr-fill" id="rf-m" style="background:var(--warn)"></div></div><div class="rr-pct" id="rp-m">0%</div></div>
+          <div class="rr"><div class="rr-dot" style="background:var(--safe)"></div><div class="rr-name"  style="color:var(--safe)">Low</div><div class="rr-track"><div class="rr-fill" id="rf-l" style="background:var(--safe)"></div></div><div class="rr-pct" id="rp-l">0%</div></div>
+        </div>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-hd">Score Distribution</div>
+        <div class="bc-rows" id="bc"></div>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-hd">Critical Zones (Lowest)</div>
+        <div class="zone-list" id="zone-list"></div>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-hd">Priority Interventions</div>
+        <div class="rec-list" id="rec-list"></div>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-hd">Data Insights</div>
+        <div id="ins-rows" style="display:flex;flex-direction:column;gap:5px;"></div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- MAP -->
+    <div id="map-wrap">
+      <div id="map"></div>
+
+      <!-- CONTROLS -->
+      <div id="ctrls">
+        <button class="cb on" id="c-score"  onclick="setLayer('score')"><span class="cb-ic">🌡️</span> Score Map</button>
+        <button class="cb"    id="c-risk"   onclick="setLayer('risk')"><span class="cb-ic">⚠️</span> Risk Map</button>
+        <button class="cb"    id="c-hot"    onclick="toggleHotspot()"><span class="cb-ic">🔥</span> Hotspots</button>
+        <button class="cb"    id="c-zhr"    onclick="zoomHighRisk()"><span class="cb-ic">🎯</span> Zoom High Risk</button>
+        <button class="cb"    id="c-filter" onclick="toggleFilter()"><span class="cb-ic">🔍</span> Only High Risk</button>
+        <button class="cb"               onclick="resetView()"><span class="cb-ic">↩️</span> Reset View</button>
+      </div>
+
+      <!-- INSIGHT CARDS -->
+      <div id="ins-cards">
+        <div class="ic"><div class="ic-lb">City Avg Score</div><div class="ic-v c-blue" id="ic-avg">—</div><div class="ic-sub">out of 100</div></div>
+        <div class="ic"><div class="ic-lb">Highest Risk Zone</div><div class="ic-v c-red" id="ic-worst">—</div><div class="ic-sub" id="ic-ws">score —</div></div>
+        <div class="ic"><div class="ic-lb">Safest Zone</div><div class="ic-v c-grn" id="ic-best">—</div><div class="ic-sub" id="ic-bs">score —</div></div>
+        <div class="ic"><div class="ic-lb">Hotspots</div><div class="ic-v c-amber" id="ic-hs">—</div><div class="ic-sub">high-risk clusters</div></div>
+      </div>
+
+      <!-- LEGEND -->
+      <div id="legend">
+        <div class="leg-title" id="leg-t">Health & Safety Score</div>
+        <div id="leg-score">
+          <div class="leg-grad"></div>
+          <div class="leg-lbls"><span class="leg-lbl">0</span><span class="leg-lbl">25</span><span class="leg-lbl">50</span><span class="leg-lbl">75</span><span class="leg-lbl">100</span></div>
+        </div>
+        <div id="leg-risk" style="display:none">
+          <div class="leg-cats">
+            <div class="leg-cat"><div class="leg-sw" style="background:var(--danger)"></div>High Risk</div>
+            <div class="leg-cat"><div class="leg-sw" style="background:var(--warn)"></div>Medium Risk</div>
+            <div class="leg-cat"><div class="leg-sw" style="background:var(--safe)"></div>Low Risk</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLTIP -->
+      <div id="tt">
+        <div class="tt-zid" id="tt-zid">ZONE —</div>
+        <div class="tt-score" id="tt-sc">—</div>
+        <div class="tt-risk"  id="tt-rk">—</div>
+      </div>
+
+    </div><!-- /map-wrap -->
+  </div><!-- /body -->
+</div><!-- /app -->
+
+<script src="utils.js"></script>
+<script src="data-loader.js"></script>
+<script src="map.js"></script>
+<script src="dashboard.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
