@@ -288,10 +288,13 @@ function buildAIStories() {
   // Story 2 — rising trend summary
   if (rising.length) {
     const pct = ((rising.length / F.length) * 100).toFixed(0);
+    // Pull the actual city-wide emergency trend percentage from the first feature's properties
+    const trendPct = (F.find(p => p.emergency_trend_pct != null)?.emergency_trend_pct ?? 0);
+    const trendStr = trendPct >= 0 ? `+${trendPct.toFixed(1)}` : trendPct.toFixed(1);
     stories.push({
       icon: '⬆️',
       title: `${rising.length} Zones Show Rising Trend (${pct}%)`,
-      text: `Emergency call intensity is trending upward city-wide (+3.9%/month). These ${rising.length} zones have elevated local pressure that amplifies the rising trend.`
+      text: `Emergency call intensity is trending upward city-wide (${trendStr}%/month). These ${rising.length} zones have elevated local pressure that amplifies the rising trend.`
     });
   }
 
@@ -305,7 +308,8 @@ function buildAIStories() {
   }
 
   // Story 4 — food safety gaps
-  const lowFood = F.filter(p => (p.food_safety_score || 0) < 90 && p.food_safety_score > 0);
+  const FOOD_SAFETY_THRESHOLD = 95; // Scores below this are considered below city average
+  const lowFood = F.filter(p => (p.food_safety_score || 0) < FOOD_SAFETY_THRESHOLD && p.food_safety_score > 0);
   if (lowFood.length) {
     const avgFood = (lowFood.reduce((a, p) => a + p.food_safety_score, 0) / lowFood.length).toFixed(1);
     stories.push({

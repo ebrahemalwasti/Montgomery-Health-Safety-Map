@@ -304,8 +304,10 @@ for row in pop_rows:
         pass
 
 if len(total_series) >= 2:
-    mean_pop = sum(total_series) / len(total_series)
-    variance_pop = sum((v - mean_pop) ** 2 for v in total_series) / len(total_series)
+    n_pop = len(total_series)
+    # Single-pass mean and variance (Welford's algorithm equivalent via two-pass for clarity)
+    mean_pop = sum(total_series) / n_pop
+    variance_pop = sum((v - mean_pop) ** 2 for v in total_series) / n_pop
     city_population_flux = math.sqrt(variance_pop) / mean_pop if mean_pop > 0 else 0.0
 else:
     city_population_flux = 0.0
@@ -421,14 +423,20 @@ def nearest_km(cell_lon: float, cell_lat: float, pts: list) -> float:
     if not pts:
         return 999.0
     best = math.inf
-    lat_delta = 1.0  # rough 111 km pre-filter
-    lon_delta = 1.0
+    # Start with a 50 km bounding box to pre-filter candidates efficiently;
+    # tighten once a candidate is found.
+    search_km = 50.0
+    lat_delta = search_km / 111.0
+    lon_delta = search_km / (111.0 * max(math.cos(math.radians(cell_lat)), 0.01))
     for lon, lat in pts:
         if abs(lat - cell_lat) > lat_delta or abs(lon - cell_lon) > lon_delta:
             continue
         d = haversine_km(cell_lat, cell_lon, lat, lon)
         if d < best:
             best = d
+            # Tighten the search box to avoid testing far-away candidates
+            lat_delta = best / 111.0
+            lon_delta = best / (111.0 * max(math.cos(math.radians(cell_lat)), 0.01))
     return best if math.isfinite(best) else 999.0
 
 

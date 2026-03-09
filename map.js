@@ -389,8 +389,6 @@ function toggleNearestResource() {
   showErr('Click a zone to see nearest shelter & pharmacy.');
 }
 
-map && (map._nearestClickHandler = null); // placeholder — set after map is ready
-
 function _handleNearestClick(feature, lngLat) {
   if (!nearestOn || !feature) return;
   _clearNearestLine();
